@@ -58,10 +58,15 @@ static int ijkdummy_open(URLContext *h, const char *arg, int flags, AVDictionary
     return -1;
 }
 
+#if CONFIG_ASYNC_PROTOCOL
 IJK_FF_PROTOCOL(async);
+#endif
+
+#if CONFIG_DUMMY_PROTOCOL
 IJK_DUMMY_PROTOCOL(ijkmediadatasource);
 IJK_DUMMY_PROTOCOL(ijkhttphook);
 IJK_DUMMY_PROTOCOL(ijklongurl);
 IJK_DUMMY_PROTOCOL(ijksegment);
 IJK_DUMMY_PROTOCOL(ijktcphook);
 IJK_DUMMY_PROTOCOL(ijkio);
+#endif
